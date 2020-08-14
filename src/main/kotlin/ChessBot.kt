@@ -5,7 +5,7 @@ import discord4j.core.GatewayDiscordClient
 import discord4j.core.event.domain.message.MessageCreateEvent
 
 class ChessBot {
-    private val token = "NzQxNzk5MzQ5NTE1ODQ1NjY1.Xy80eg.kdVj0H-7ktZwWaJNYQoI2dSndOA"
+    private val token = ""
     private val client: DiscordClient
     private val gateway: GatewayDiscordClient?
     private val classifier: Classifier
