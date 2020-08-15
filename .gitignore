@@ -141,6 +141,9 @@ buildNumber.properties
 ### Build ###
 build
 
+### IDE
+.idea
+
 ### Windows ###
 # Windows thumbnail cache files
 Thumbs.db

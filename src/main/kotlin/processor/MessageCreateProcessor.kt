@@ -3,6 +3,7 @@ package processor
 import discord4j.core.event.domain.Event
 import discord4j.core.event.domain.message.MessageCreateEvent
 import performers.LeaguePerformer
+import performers.MemberPerformer
 import performers.Performer
 
 class MessageCreateProcessor: Processor {
@@ -28,6 +29,7 @@ class MessageCreateProcessor: Processor {
             if(command.removeAt(0) == "!chess") {
                 return when(command.removeAt(0).trim()) {
                     "league" -> LeaguePerformer()
+                    "member" -> MemberPerformer()
                     else -> null
                 }
             }
