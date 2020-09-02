@@ -26,7 +26,7 @@ class MessageCreateProcessor: Processor {
 
     private fun createPerformer(command: MutableList<String>): Performer? {
         if(command.size > 0) {
-            if(command.removeAt(0) == "!chess") {
+            if(command.removeAt(0) == "c!") {
                 return when(command.removeAt(0).trim()) {
                     "league" -> LeaguePerformer()
                     "member" -> MemberPerformer()

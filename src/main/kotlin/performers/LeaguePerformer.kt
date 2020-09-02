@@ -7,6 +7,8 @@ import org.nocrala.tools.texttablefmt.CellStyle
 import org.nocrala.tools.texttablefmt.ShownBorders
 import org.nocrala.tools.texttablefmt.Table
 import storage.MongoStorage
+import table.CustomTable
+import table.NocralaTable
 
 class LeaguePerformer: Performer {
     override fun perform(command: MutableList<String>): String? {
@@ -24,13 +26,13 @@ class LeaguePerformer: Performer {
     }
 
     private fun list(): String {
-        val table = Table(1, BorderStyle.CLASSIC, ShownBorders.ALL, false)
-        table.addCell("League")
-        val cs = CellStyle(CellStyle.HorizontalAlign.LEFT, CellStyle.AbbreviationStyle.DOTS, CellStyle.NullStyle.EMPTY_STRING)
-        MongoStorage.list<League>().forEach {
-            table.addCell(it.name, cs)
-        }
+
+        val table: CustomTable = NocralaTable(listOf("name"))
+
+        table.addContent(MongoStorage.list<League>())
+
         return table.render()
+
     }
 
 }

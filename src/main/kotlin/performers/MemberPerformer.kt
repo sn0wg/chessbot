@@ -5,6 +5,8 @@ import championship.Participant
 import org.litote.kmongo.eq
 import org.nocrala.tools.texttablefmt.Table
 import storage.MongoStorage
+import table.CustomTable
+import table.NocralaTable
 
 class MemberPerformer: Performer {
 
@@ -27,18 +29,16 @@ class MemberPerformer: Performer {
     }
 
     private fun listMember(command: MutableList<String>): String {
+
         val league = MongoStorage.list<League>(League::name eq command[0]) ?: return "League ${command[1]} not found."
 
-        val table = Table(2)
+        league.start()
 
-        table.addCell("Member")
-        table.addCell("Points")
+        val table: CustomTable = NocralaTable(listOf("name", "points"))
 
-        league.participants.forEach {
-            table.addCell(it.name)
-            table.addCell(it.points.toString())
-        }
+        table.addContent(league.participants)
 
         return table.render()
+
     }
 }
