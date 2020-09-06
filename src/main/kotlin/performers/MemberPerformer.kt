@@ -32,8 +32,6 @@ class MemberPerformer: Performer {
 
         val league = MongoStorage.list<League>(League::name eq command[0]) ?: return "League ${command[1]} not found."
 
-        league.start()
-
         val table: CustomTable = NocralaTable(listOf("name", "points"))
 
         table.addContent(league.participants)

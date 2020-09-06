@@ -4,6 +4,7 @@ import championship.League
 import com.mongodb.client.MongoClient
 import com.mongodb.client.MongoDatabase
 import com.mongodb.client.model.UpdateOptions
+import config.ConfigLoader
 import org.bson.conversions.Bson
 import org.litote.kmongo.*
 import kotlin.reflect.KClass
@@ -13,8 +14,8 @@ object MongoStorage {
     val db: MongoDatabase
 
     init {
-        client = KMongo.createClient("mongodb+srv://snowg:DrkilnEGWFzcov35@cluster0-20o1q.mongodb.net/chessbot?retryWrites=true&w=majority")
-        db = client.getDatabase("chessdb")
+        client = KMongo.createClient(ConfigLoader.read("storage.url"))
+        db = client.getDatabase(ConfigLoader.read("storage.database"))
     }
 
     inline fun <reified X : Any> save(entity: X) {

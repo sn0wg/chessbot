@@ -1,7 +1,7 @@
 package championship
 
 data class Round(
-        val games: MutableList<RoundGame>
+        val matches: MutableList<Match>
 ) {
-    fun addGame(game: RoundGame) = games.add(game)
+    fun add(match: Match) = matches.add(match)
 }

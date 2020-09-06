@@ -169,5 +169,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# Personal infos
+*-me.*
 
 # End of https://www.gitignore.io/api/git,java,maven,eclipse,windows

@@ -1,6 +1,6 @@
 package championship
 
-data class RoundGame(
+data class Match(
     val challenger: String,
     val challenged: String
 )

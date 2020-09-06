@@ -7,7 +7,8 @@ data class League(
         val id: String? = null,
         val name: String,
         val participants: MutableList<Participant> = mutableListOf(),
-        val status: LeagueStatus = LeagueStatus.CREATING
+        val status: LeagueStatus = LeagueStatus.CREATING,
+        val table: GameTable = GameTable()
 ) {
         fun addParticipant(name: String) {
                 if(status != LeagueStatus.CREATING)
@@ -34,7 +35,7 @@ data class League(
                         val round = Round(mutableListOf())
 
                         for(k in 0 until originalArray.size/2) {
-                                round.addGame(RoundGame(arr1[k], arr2[k]))
+                                round.add(Match(arr1[k], arr2[k]))
                         }
 
                         roll(arr1, arr2)
