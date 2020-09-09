@@ -1,13 +1,9 @@
 package championship
 
-import java.util.*
-
 class GameTable {
     var round: Int = 0
         private set
     private val rounds: MutableList<Round>
-
-    val x = Properties()
 
     constructor(round: Int, rounds: MutableList<Round>) {
         this.round = round
@@ -24,7 +20,9 @@ class GameTable {
         round = (round + 1) % rounds.size
     }
 
-    fun getRoundGames(): Round {
+    fun roundGames(): Round {
         return rounds[round]
     }
+
+    fun getRounds(): List<Round> = this.rounds.toList()
 }

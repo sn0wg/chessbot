@@ -15,6 +15,8 @@ class LeaguePerformer: Performer {
         return when(command.removeAt(0)) {
             "create" -> create(command)
             "list" -> list()
+            "start" -> start(command)
+            "show" -> show(command)
             else -> "Invalid command."
         }
     }
@@ -27,12 +29,32 @@ class LeaguePerformer: Performer {
 
     private fun list(): String {
 
-        val table: CustomTable = NocralaTable(listOf("name"))
+        val table: CustomTable = NocralaTable(listOf("name", "status"))
 
         table.addContent(MongoStorage.list<League>())
 
         return table.render()
 
+    }
+
+    private fun start(command: MutableList<String>): String {
+        val league = MongoStorage.list<League>(League::name eq command[0]) ?: return "League ${command[0]} not found."
+
+        league.start()
+
+        MongoStorage.updateByID<League>(league.id!!, league)
+
+        return "League ${command[0]} started!"
+    }
+
+    private fun show(command: MutableList<String>): String {
+        val league = MongoStorage.list<League>(League::name eq command[0]) ?: return "League ${command[0]} not found."
+
+        val table: CustomTable = NocralaTable(listOf("challenger", "challenged", "winner"))
+
+        table.addContent(league.table.roundGames().matches)
+
+        return "Round: ${league.table.round + 1} \n ${table.render()}"
     }
 
 }
