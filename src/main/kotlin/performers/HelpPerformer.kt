@@ -26,7 +26,7 @@ class HelpPerformer: Performer {
             tabMessage("!c member [<subcomand>] [<args>]: Manage members of leagues", 1),
             tabMessage("!c match [<subcomand>] [<args>]: Manage matches of leagues", 1),
             tabMessage("!c help [<subcomand>] [<args>]: Show help", 1),
-            tabMessage("Try \"c! help <command>\" to see comand subcomands and arguments.")
+            tabMessage("Try \"c! help <command>\" to see subcomands and arguments of a command.")
         ).joinToString("\n")
     }
 
