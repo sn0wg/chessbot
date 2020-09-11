@@ -2,10 +2,7 @@ package processor
 
 import discord4j.core.event.domain.Event
 import discord4j.core.event.domain.message.MessageCreateEvent
-import performers.LeaguePerformer
-import performers.MatchPerformer
-import performers.MemberPerformer
-import performers.Performer
+import performers.*
 
 class MessageCreateProcessor: Processor {
     override fun process(event: Event) {
@@ -32,6 +29,7 @@ class MessageCreateProcessor: Processor {
                     "league" -> LeaguePerformer()
                     "member" -> MemberPerformer()
                     "match" -> MatchPerformer()
+                    "help" -> HelpPerformer()
                     else -> null
                 }
             }
