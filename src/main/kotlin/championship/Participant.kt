@@ -2,5 +2,9 @@ package championship
 
 data class Participant(
     val name: String,
-    val points: Int
-)
+    var points: Int
+) {
+    fun winGame() {
+        this.points+=2
+    }
+}

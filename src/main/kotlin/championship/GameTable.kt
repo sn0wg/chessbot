@@ -20,6 +20,11 @@ class GameTable {
         round = (round + 1) % rounds.size
     }
 
+    fun finishRound() {
+        if (rounds[round].matches.map { it.winner }.filter { it == null }.isEmpty())
+            nextRound()
+    }
+
     fun roundGames(): Round {
         return rounds[round]
     }

@@ -34,7 +34,7 @@ class MemberPerformer: Performer {
 
         val table: CustomTable = NocralaTable(listOf("name", "points"))
 
-        table.addContent(league.participants)
+        table.addContent(league.participants.apply { this.sortByDescending { it.points } })
 
         return table.render()
 

@@ -46,6 +46,12 @@ data class League(
         }
     }
 
+    fun defineMatchWinner(match: Int, result: String) {
+        table.roundGames().matches[match - 1].winner(result)
+        participants.find { it.name == result }?.winGame()
+        table.finishRound()
+    }
+
     private fun roll(arr1: MutableList<String>, arr2: MutableList<String>) {
         val first = arr1.removeAt(0)
 
