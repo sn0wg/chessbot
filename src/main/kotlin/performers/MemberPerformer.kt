@@ -30,7 +30,7 @@ class MemberPerformer: Performer {
 
     private fun listMember(command: MutableList<String>): String {
 
-        val league = MongoStorage.list<League>(League::name eq command[0]) ?: return "League ${command[1]} not found."
+        val league = MongoStorage.list<League>(League::name eq command[0]) ?: return "League ${command[0]} not found."
 
         val table: CustomTable = NocralaTable(listOf("name", "points"))
 
